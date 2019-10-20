@@ -17,7 +17,7 @@ Angular CLI: 8.3.12
 
 Node: 10.16.3
 
-OS: win32 x64
+OS: win32 x64 (Node is inherently multi-platform and can be run on most architectures).
 
 ### Pages:
   /home
