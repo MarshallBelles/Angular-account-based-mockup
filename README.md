@@ -10,7 +10,7 @@ Authentication service is using Google Firebase Authentication
 Search service is stubbed but would idealy be replaced to make requests to a backend elasticsearch server.
 
 This site is deployed on the Google Firebase platform
-(Visit the example site)[https://account-based-mockup.firebaseapp.com/]
+[Visit the example site](https://account-based-mockup.firebaseapp.com/)
 
 Angular CLI: 8.3.12
 Node: 10.16.3
@@ -31,4 +31,4 @@ Services:
 * Search (stubbed)
 
 
-Read more about (Angular.IO)[https://angular.io]
+Read more about [Angular.IO](https://angular.io)
