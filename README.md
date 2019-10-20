@@ -12,19 +12,30 @@ Search service is stubbed but would idealy be replaced to make requests to a bac
 This site is deployed on the Google Firebase platform
 [Visit the example site](https://account-based-mockup.firebaseapp.com/)
 
+### Platform
 Angular CLI: 8.3.12
+
 Node: 10.16.3
+
 OS: win32 x64
 
-Pages:
+### Pages:
   /home
+  
   /search
+  
   /results - 5 demo records
+  
   /results/:record_id
+  
   /about
+  
   /profile
+  
   /login
+  
   /logout
+  
 
 Services:
 * Authentication (Google Firebase)
