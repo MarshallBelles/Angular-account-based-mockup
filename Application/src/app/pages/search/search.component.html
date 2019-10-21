@@ -1,1 +1,38 @@
-<p>search works!</p>
+<app-navbar></app-navbar>
+<div class="spacer"> </div>
+<div class="home">
+    <div class='card col-md-8'>
+        <div class="card-body">
+            <h2>Account-based-mockup</h2>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="FIND burgers, bars, spas, handymen..." aria-label="Username" aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <button [routerLink]="['/search']" class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spacer"></div>
+<div class="home">
+    <div class="card col-md-8">
+        <div class="card-header" style="margin: 0px -15px 0px;">
+            <h2>Search</h2>
+        </div>
+        <div class="card-body col-md-6" style="margin-right: auto; margin-left: auto;">
+            <div *ngFor="let result of results; index as i" class="">
+                <div style="display: flex; margin: 40px;">
+                <div style="display: block;">
+                    <img src="{{result.photo}}" alt="" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
+                </div>
+                <div style="display: block; margin-left: auto; margin-right: auto; text-align: center;">
+                    <h3>{{result.name}}</h3>
+                    <p>{{result.address}}</p>
+                    <b>{{result.stars}}</b><ngb-rating [(rate)]="result.stars" [readonly]="true" max="5"></ngb-rating>
+                    <button style="margin: 20px;" [routerLink]="['/results/', i]" class="btn btn-outline-primary">Go!</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

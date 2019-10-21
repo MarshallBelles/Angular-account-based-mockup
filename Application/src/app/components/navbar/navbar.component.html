@@ -1,0 +1,11 @@
+<div class="navigation">
+    <div><img class="logo" src="../../../assets/icons/icon-192x192.png" alt=""></div>
+    <div class="nav-links">
+        <button [routerLink]="['']">Search</button>
+        <button *ngIf="loggedIn" [routerLink]="['/profile']">Profile</button>
+        <button [routerLink]="['/about']">About</button>
+        <button *ngIf="loggedIn" [routerLink]="['/logout']">Logout</button>
+        <button *ngIf="!loggedIn" [routerLink]="['/login']">Log in</button>
+        <button class="signup" *ngIf="!loggedIn" [routerLink]="['/signup']">Sign Up</button>
+    </div>
+</div>

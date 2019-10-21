@@ -1,1 +1,11 @@
-<p>results-record works!</p>
+<app-navbar></app-navbar>
+<div style="display: flex; margin: 40px;">
+    <div style="display: block;">
+        <img src="{{result.photo}}" alt="" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
+    </div>
+    <div style="display: block; margin-left: auto; margin-right: auto; text-align: center;">
+        <h3>{{result.name}}</h3>
+        <p>{{result.address}}</p>
+        <b>{{result.stars}}</b><ngb-rating [(rate)]="result.stars" [readonly]="true" max="5"></ngb-rating>
+    </div>
+</div>

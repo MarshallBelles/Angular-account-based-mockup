@@ -1,16 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy, NgZone } from '@angular/core';
 import * as firebase from 'firebase';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCZ-gm9qZ_4uutRHOrF2-caRTIM6sE2U9c",
-  authDomain: "account-based-mockup.firebaseapp.com",
-  databaseURL: "https://account-based-mockup.firebaseio.com",
-  projectId: "account-based-mockup",
-  storageBucket: "account-based-mockup.appspot.com",
-  messagingSenderId: "1064700680024",
-  appId: "1:1064700680024:web:8a3b84538d123f4859372d",
-  measurementId: "G-6W1336K8MD"
-};
+import { Router } from '@angular/router';
+import { Observable, Observer } from 'rxjs';
 
 /* const firebaseConfig = {
   apiKey: '<your-api-key>',
@@ -24,20 +15,60 @@ const firebaseConfig = {
 } */
 
 const app = firebase.initializeApp(firebaseConfig);
-
+const googleProvider = firebase.auth.GoogleAuthProvider;
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthenticationService implements OnInit, OnDestroy {
   authenticator: any;
-  constructor() {
+  authenticated: boolean;
+  constructor(private ngZone: NgZone, private router: Router) {
     this.authenticator = app.auth();
+    firebase.auth().onAuthStateChanged((auth) => {
+      if (auth) {
+        this.authenticated = true;
+      } else {
+        this.authenticated = false;
+      }
+    });
   }
 
-  public isAuthenticated():boolean {
-    return false;
+  ngOnInit() {
   }
-  public logIn() {}
-  public logOut() {}
+
+  ngOnDestroy() {
+  }
+
+  public emailLogIn(email, password) {
+    this.authenticator.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.ngZone.run(() => this.router.navigateByUrl('/')).then();
+      })
+      .catch((err)=>{alert(err.message)});
+  }
+
+  public anonymousLogIn() {
+    this.authenticator.signInAnonymously()
+      .then((user)=>{
+        localStorage.setItem('user', JSON.stringify(user));
+        this.ngZone.run(() => this.router.navigateByUrl('/')).then();
+      })
+      .catch((err)=>{alert(err.message)});
+  }
+
+  public googleLogIn() {
+    this.authenticator.signInWithPopup(new googleProvider)
+      .then((user)=>{
+        localStorage.setItem('user', JSON.stringify(user));
+        this.ngZone.run(() => this.router.navigateByUrl('/')).then();
+      })
+      .catch((err)=>{alert(err.message)});
+  }
+
+  public logOut() {
+    this.authenticator.signOut();
+    localStorage.removeItem('user');
+  }
 }

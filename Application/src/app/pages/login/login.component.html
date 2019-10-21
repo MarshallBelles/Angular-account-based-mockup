@@ -1,1 +1,26 @@
-<p>login works!</p>
+<app-navbar></app-navbar>
+<div class="spacer"> </div>
+<div class="home">
+    <div class='card col-md-4'>
+        <div class="card-body">
+            <h2>Account-based-mockup</h2>
+            <div class="input-group mb-3">
+                <input #user type="email" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input #pass type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div style="display: block; justify-content: center; max-width: 100%; width: auto;">
+                <div class="input-group mb-3" style="display: flex; justify-content: center; max-width: 100%; width: auto;">
+                    <button (click)="loginPassword(user.value, pass.value)" class="btn btn-primary">Sign In with Password</button>
+                </div>
+                <div class="input-group mb-3" style="display: flex; justify-content: center; max-width: 100%; width: auto;">
+                    <button (click)="loginGoogle()" class="btn btn-outline-primary">Continue with Google</button>
+                </div>
+                <div class="input-group mb-3" style="display: flex; justify-content: center; max-width: 100%; width: auto;">
+                    <button (click)="loginAnonymous()" class="btn btn-outline-secondary">Continue Anonymously</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
