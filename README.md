@@ -22,11 +22,9 @@ OS: win32 x64
 ### Pages:
   /home
   
-  /search
+  /search- 5 demo records
   
-  /results - 5 demo records
-  
-  /results/:record_id
+  /results/:record_id 
   
   /about
   
